@@ -1,6 +1,16 @@
 import React, { useRef, useState, useEffect } from 'react';
 import revealTextTree from './TextReveal';
 
+function shouldUseFallback() {
+  if (typeof window === 'undefined') return false;
+
+  return (
+    window.matchMedia('(max-width: 768px)').matches ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    Boolean(navigator.connection?.saveData)
+  );
+}
+
 /**
  * LoopingVideo: Seamless video looper using two stacked <video> elements.
  * At (duration - 1s), starts the other video from 0 and crossfades over 1s,
@@ -12,23 +22,16 @@ export default function LoopingVideo({
   playbackRate = 0.5,
   className = 'w-full h-full object-cover',
 }) {
-  const [useFallback, setUseFallback] = useState(false);
+  const [useFallback, setUseFallback] = useState(shouldUseFallback);
   const [activeSlot, setActiveSlot] = useState(0); // 0 or 1
   const [slotOpacities, setSlotOpacities] = useState([1, 0]);
 
   const v0Ref = useRef(null);
   const v1Ref = useRef(null);
+  const activeSlotRef = useRef(0);
   const crossfadingRef = useRef(false);
 
   useEffect(() => {
-    // Check reduced motion or save-data preferences
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isSaveData = Boolean(navigator.connection?.saveData);
-    if (prefersReducedMotion || isSaveData) {
-      setUseFallback(true);
-      return;
-    }
-
     const v0 = v0Ref.current;
     const v1 = v1Ref.current;
     if (!v0 || !v1) return;
@@ -65,17 +68,18 @@ export default function LoopingVideo({
         v0.pause();
         v1.pause();
       } else {
-        if (activeSlot === 0) playVideo(v0);
+        if (activeSlotRef.current === 0) playVideo(v0);
         else playVideo(v1);
       }
     };
     document.addEventListener('visibilitychange', handleVisibility);
 
-    let animationFrameId;
+    let crossfadeTimeout;
 
     const checkLoop = () => {
-      const activeVideo = activeSlot === 0 ? v0 : v1;
-      const nextVideo = activeSlot === 0 ? v1 : v0;
+      const currentSlot = activeSlotRef.current;
+      const activeVideo = currentSlot === 0 ? v0 : v1;
+      const nextVideo = currentSlot === 0 ? v1 : v0;
 
       if (activeVideo && activeVideo.duration && activeVideo.duration > 1.2) {
         const timeLeft = activeVideo.duration - activeVideo.currentTime;
@@ -87,9 +91,11 @@ export default function LoopingVideo({
           nextVideo.muted = true;
           nextVideo.playbackRate = playbackRate;
           nextVideo.play().then(() => {
-            setSlotOpacities(activeSlot === 0 ? [0, 1] : [1, 0]);
-            setTimeout(() => {
-              setActiveSlot((prev) => (prev === 0 ? 1 : 0));
+            setSlotOpacities(currentSlot === 0 ? [0, 1] : [1, 0]);
+            crossfadeTimeout = window.setTimeout(() => {
+              const nextSlot = currentSlot === 0 ? 1 : 0;
+              activeSlotRef.current = nextSlot;
+              setActiveSlot(nextSlot);
               crossfadingRef.current = false;
             }, 1000);
           }).catch(() => {
@@ -97,20 +103,21 @@ export default function LoopingVideo({
           });
         }
       }
-
-      animationFrameId = requestAnimationFrame(checkLoop);
     };
 
-    animationFrameId = requestAnimationFrame(checkLoop);
+    v0.addEventListener('timeupdate', checkLoop);
+    v1.addEventListener('timeupdate', checkLoop);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      window.clearTimeout(crossfadeTimeout);
+      v0.removeEventListener('timeupdate', checkLoop);
+      v1.removeEventListener('timeupdate', checkLoop);
       document.removeEventListener('visibilitychange', handleVisibility);
     };
-  }, [src, playbackRate, activeSlot]);
+  }, [src, playbackRate, useFallback]);
 
   if (useFallback && fallbackImage) {
-    return <img src={fallbackImage} alt="" className={className} />;
+    return <img src={fallbackImage} alt="" className={className} decoding="async" />;
   }
 
   return revealTextTree((
@@ -122,7 +129,7 @@ export default function LoopingVideo({
         autoPlay
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         onError={() => setUseFallback(true)}
         style={{ opacity: slotOpacities[0], transition: 'opacity 1s linear' }}
         className={`absolute inset-0 ${className}`}
@@ -134,7 +141,7 @@ export default function LoopingVideo({
         autoPlay
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         onError={() => setUseFallback(true)}
         style={{ opacity: slotOpacities[1], transition: 'opacity 1s linear' }}
         className={`absolute inset-0 ${className}`}

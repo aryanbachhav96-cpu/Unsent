@@ -30,6 +30,7 @@ export default function PageBackground({ image = '/images/img-03.jpg' }) {
         <img
           src={image}
           alt=""
+          decoding="async"
           style={{ objectPosition }}
           className="unsent-img w-full h-full object-cover handheld-shake"
         />

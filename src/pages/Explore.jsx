@@ -43,6 +43,8 @@ export default function Explore() {
                   <img
                     src={room.img}
                     alt={room.title}
+                    loading="lazy"
+                    decoding="async"
                     className="unsent-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>

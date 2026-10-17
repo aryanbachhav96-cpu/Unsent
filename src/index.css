@@ -371,6 +371,47 @@
     padding: 2rem 0 2.5rem;
   }
 
+  @media (max-width: 768px) {
+    .handheld-shake,
+    .jolt-container,
+    .unsent-scrim {
+      animation: none !important;
+      will-change: auto;
+    }
+
+    .film-grain {
+      display: none;
+      animation: none;
+    }
+
+    .blur-reveal-letter {
+      animation: none;
+      filter: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .day-global-scrim {
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+    }
+
+    .liquid-glass,
+    .day-glass,
+    .day-room-link {
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+
+    .flowing-menu-marquee {
+      display: none;
+    }
+
+    .flowing-menu-label {
+      opacity: 1 !important;
+    }
+  }
+
   .flowing-menu-heading,
   .flowing-menu-list {
     width: calc(100% - 1.5rem);

@@ -62,5 +62,14 @@ function transformNode(node, key) {
 }
 
 export default function revealTextTree(node) {
+  if (
+    typeof window !== 'undefined' &&
+    (window.matchMedia('(max-width: 768px)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      Boolean(navigator.connection?.saveData))
+  ) {
+    return node;
+  }
+
   return transformNode(node);
 }

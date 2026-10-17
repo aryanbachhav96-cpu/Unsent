@@ -60,7 +60,7 @@ export default function DayLayout() {
 
       {/* Light scrim keeps Day-mode text readable over moving imagery. */}
       <div
-        className="fixed inset-0 w-full h-full pointer-events-none -z-10 transition-colors duration-500"
+        className="day-global-scrim fixed inset-0 w-full h-full pointer-events-none -z-10 transition-colors duration-500"
         style={{
           backgroundColor: isLanding ? 'rgba(255, 255, 255, 0.12)' : isAuthPage ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.28)',
           backdropFilter: isLanding ? 'none' : isAuthPage ? 'blur(1px)' : 'blur(2px)',
