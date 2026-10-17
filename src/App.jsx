@@ -38,7 +38,7 @@ export default function App() {
   if (isDayMode) {
     return (
       <>
-        <div className="fixed left-4 top-4 z-[70]">
+        <div className="site-back-button-container fixed left-4 top-4 z-[70]">
           <BackButton mode="day" />
         </div>
         <Routes>
@@ -63,7 +63,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col min-h-screen bg-transparent text-white relative">
-      <div className="fixed left-4 top-4 z-[70]">
+      <div className="site-back-button-container fixed left-4 top-4 z-[70]">
         <BackButton />
       </div>
       <FilmGrain />

@@ -47,16 +47,16 @@ export default function Navbar() {
   ];
 
   return revealTextTree((
-    <header className="fixed top-4 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
+    <header className="site-header fixed top-4 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
       <nav
-        className="pointer-events-auto w-full max-w-5xl liquid-glass rounded-full px-5 py-2.5 pl-14 flex items-center justify-between transition-all duration-300"
+        className="pointer-events-auto w-full max-w-5xl liquid-glass rounded-full px-4 sm:px-5 py-2.5 pl-12 sm:pl-14 flex items-center justify-between transition-all duration-300"
         aria-label="Main Navigation"
       >
         {/* Left: Logo + Unsent */}
-        <div className="flex items-center gap-2.5">
-          <Link to="/night" className="flex items-center gap-2.5 group">
+        <div className="flex shrink-0 items-center gap-2.5">
+          <Link to="/night" className="flex shrink-0 items-center gap-2.5 whitespace-nowrap group">
             <Logo className="w-6 h-6 text-white transition-transform group-hover:scale-105 duration-200" />
-            <span className="font-semibold text-white tracking-tight text-lg">Unsent</span>
+            <span className="night-nav-brand font-semibold text-white tracking-tight text-lg">Unsent</span>
           </Link>
         </div>
 
@@ -195,7 +195,7 @@ export default function Navbar() {
 
       {/* Mobile Glass Sheet Menu */}
       {mobileOpen && (
-        <div className="md:hidden pointer-events-auto fixed inset-x-4 top-20 liquid-glass rounded-3xl p-5 flex flex-col gap-3 border border-white/10 backdrop-blur-2xl z-50 max-h-[80vh] overflow-y-auto">
+        <div className="night-mobile-menu md:hidden pointer-events-auto fixed inset-x-4 top-20 liquid-glass rounded-3xl p-5 flex flex-col gap-3 border border-white/10 backdrop-blur-2xl z-50 max-h-[80vh] overflow-y-auto overscroll-contain">
           <div className="flex flex-col gap-1 pb-2 border-b border-white/10">
             {navLinks.map((link) => (
               <Link

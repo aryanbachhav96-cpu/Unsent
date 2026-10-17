@@ -9,7 +9,7 @@ export default function CrisisModal({ isOpen, onClose, onConfirm, variant = 'nig
 
   return revealTextTree((
     <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${isDay ? 'bg-slate-900/35' : 'bg-black/75 backdrop-blur-md'} animate-fade-in`}>
-      <div className={`relative w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl text-left ${isDay ? 'day-glass text-slate-900' : 'liquid-glass border border-white/20'}`}>
+      <div className={`responsive-modal-panel relative w-full max-w-lg rounded-3xl p-5 sm:p-8 shadow-2xl text-left ${isDay ? 'day-glass text-slate-900' : 'liquid-glass border border-white/20'}`}>
         {/* Close icon */}
         <button
           onClick={onClose}

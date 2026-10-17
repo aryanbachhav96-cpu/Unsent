@@ -68,6 +68,7 @@ function MenuItem({ item, theme, speed }) {
   }, [isActive]);
 
   const enterMenu = (event, edgeOverride) => {
+    if (event?.pointerType === 'touch') return;
     const link = linkRef.current;
     if (!link) return;
 

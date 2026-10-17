@@ -568,3 +568,91 @@
   mask-composite: exclude;
   pointer-events: none;
 }
+
+.responsive-modal-panel {
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.night-mobile-menu {
+  position: fixed;
+  max-height: min(80vh, calc(100vh - 6rem));
+  max-height: min(80vh, calc(100dvh - 6rem));
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@media (max-width: 640px) {
+  .site-header,
+  .site-back-button-container {
+    top: max(1rem, env(safe-area-inset-top));
+  }
+
+  .site-back-button-container {
+    left: max(1rem, env(safe-area-inset-left));
+  }
+
+  .landing-controls {
+    top: max(1rem, env(safe-area-inset-top));
+    right: max(1rem, env(safe-area-inset-right));
+  }
+
+  #root,
+  .day-experience,
+  .day-experience main,
+  .flowing-menu-section {
+    min-width: 0;
+  }
+
+  img,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+
+  .day-nav-brand {
+    font-size: 0.95rem;
+  }
+
+  .night-mobile-menu a,
+  .day-mobile-menu a {
+    min-height: 2.75rem;
+  }
+
+  input:not([type='checkbox']):not([type='radio']),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  .feed-page .overflow-x-auto > button {
+    min-height: 2.5rem;
+  }
+
+  .flowing-menu-label,
+  .flowing-menu-marquee-text {
+    font-size: clamp(1.15rem, 5vw, 1.65rem);
+  }
+
+  .day-experience h1,
+  .day-experience h2,
+  .day-experience h3,
+  main h1,
+  main h2,
+  main h3 {
+    overflow-wrap: anywhere;
+  }
+
+  .liquid-glass.rounded-3xl.p-12 {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 359px) {
+  .day-nav-brand,
+  .night-nav-brand {
+    display: none;
+  }
+}

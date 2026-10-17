@@ -114,10 +114,10 @@ export default function My({ mode = 'night' }) {
         </div>
 
         {/* Dashboard Tabs */}
-        <div className="liquid-glass rounded-full p-1.5 flex max-w-lg mx-auto mb-8 border border-white/10">
+        <div className="liquid-glass rounded-full p-1.5 flex max-w-lg mx-auto mb-8 border border-white/10 overflow-x-auto scrollbar-none">
           <button
             onClick={() => setActiveTab('stories')}
-            className={`flex-1 py-2 text-xs sm:text-sm font-medium rounded-full transition-all flex items-center justify-center gap-1.5 ${
+            className={`flex-none whitespace-nowrap px-2.5 py-2 text-xs sm:flex-1 sm:px-3 sm:text-sm font-medium rounded-full transition-all flex items-center justify-center gap-1.5 ${
               activeTab === 'stories' ? 'bg-white text-black font-semibold shadow' : 'text-zinc-400 hover:text-white'
             }`}
           >
@@ -127,7 +127,7 @@ export default function My({ mode = 'night' }) {
 
           <button
             onClick={() => setActiveTab('vault')}
-            className={`flex-1 py-2 text-xs sm:text-sm font-medium rounded-full transition-all flex items-center justify-center gap-1.5 ${
+            className={`flex-none whitespace-nowrap px-2.5 py-2 text-xs sm:flex-1 sm:px-3 sm:text-sm font-medium rounded-full transition-all flex items-center justify-center gap-1.5 ${
               activeTab === 'vault' ? 'bg-white text-black font-semibold shadow' : 'text-zinc-400 hover:text-white'
             }`}
           >
@@ -137,7 +137,7 @@ export default function My({ mode = 'night' }) {
 
           <button
             onClick={() => setActiveTab('music_books')}
-            className={`flex-1 py-2 text-xs sm:text-sm font-medium rounded-full transition-all flex items-center justify-center gap-1.5 ${
+            className={`flex-none whitespace-nowrap px-2.5 py-2 text-xs sm:flex-1 sm:px-3 sm:text-sm font-medium rounded-full transition-all flex items-center justify-center gap-1.5 ${
               activeTab === 'music_books' ? 'bg-white text-black font-semibold shadow' : 'text-zinc-400 hover:text-white'
             }`}
           >

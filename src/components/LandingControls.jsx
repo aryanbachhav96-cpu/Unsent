@@ -12,7 +12,7 @@ export default function LandingControls({ mode = 'night' }) {
   return (
     <nav
       aria-label="Landing page actions"
-      className="fixed right-4 top-4 z-[55] flex max-w-[calc(100vw-5rem)] flex-wrap items-center justify-end gap-1.5 rounded-2xl border border-white/10 bg-black/10 p-1.5 shadow-lg backdrop-blur-md sm:gap-2 sm:rounded-full sm:px-2"
+      className="landing-controls fixed right-4 top-4 z-[55] flex max-w-[calc(100vw-5rem)] flex-wrap items-center justify-end gap-1.5 rounded-2xl border border-white/10 bg-black/10 p-1.5 shadow-lg backdrop-blur-md sm:gap-2 sm:rounded-full sm:px-2"
     >
       <Link
         to={`/auth?mode=login${authTheme}`}

@@ -158,7 +158,7 @@ export default function Stories({ mode = 'night' }) {
   };
 
   return revealTextTree((
-    <div className={`relative min-h-screen bg-transparent pt-32 pb-24 px-4 flex flex-col items-center ${isDay ? 'day-feed' : ''}`}>
+    <div className={`feed-page relative min-h-screen bg-transparent pt-32 pb-24 px-4 flex flex-col items-center ${isDay ? 'day-feed' : ''}`}>
       {!isDay && <PageBackground image="/images/img-03.jpg" />}
 
       {/* Report Modal */}

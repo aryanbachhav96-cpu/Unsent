@@ -53,7 +53,7 @@ export default function ReportModal({ isOpen, onClose, targetType, targetId, var
 
   return revealTextTree((
     <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${isDay ? 'bg-slate-900/35' : 'bg-black/80 backdrop-blur-md'}`}>
-      <div className={`relative w-full max-w-md rounded-3xl p-6 sm:p-7 text-left ${isDay ? 'day-glass text-slate-900' : 'liquid-glass border border-white/20'}`}>
+      <div className={`responsive-modal-panel relative w-full max-w-md rounded-3xl p-5 sm:p-7 text-left ${isDay ? 'day-glass text-slate-900' : 'liquid-glass border border-white/20'}`}>
         <button
           onClick={onClose}
           className={`absolute top-5 right-5 p-1 rounded-full ${isDay ? 'text-slate-500 hover:text-slate-900 hover:bg-black/5' : 'text-zinc-400 hover:text-white hover:bg-white/10'}`}
