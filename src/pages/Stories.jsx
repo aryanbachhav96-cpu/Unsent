@@ -254,7 +254,7 @@ export default function Stories({ mode = 'night' }) {
               return (
                 <article
                   key={post.id}
-                  className="liquid-glass rounded-3xl p-6 sm:p-7 border border-white/15 text-left transition-all duration-200 hover:border-white/25 relative"
+                  className="feed-post-card liquid-glass rounded-3xl p-6 sm:p-7 border border-white/15 text-left transition-all duration-200 hover:border-white/25 relative"
                 >
                   {/* Top row: Handle, Topic, Time & Actions */}
                   <div className="flex items-center justify-between gap-2 mb-4 text-xs text-zinc-400">

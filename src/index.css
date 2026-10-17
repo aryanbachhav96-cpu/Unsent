@@ -371,47 +371,6 @@
     padding: 2rem 0 2.5rem;
   }
 
-  @media (max-width: 768px) {
-    .handheld-shake,
-    .jolt-container,
-    .unsent-scrim {
-      animation: none !important;
-      will-change: auto;
-    }
-
-    .film-grain {
-      display: none;
-      animation: none;
-    }
-
-    .blur-reveal-letter {
-      animation: none;
-      filter: none;
-      opacity: 1;
-      transform: none;
-    }
-
-    .day-global-scrim {
-      -webkit-backdrop-filter: none !important;
-      backdrop-filter: none !important;
-    }
-
-    .liquid-glass,
-    .day-glass,
-    .day-room-link {
-      -webkit-backdrop-filter: blur(6px);
-      backdrop-filter: blur(6px);
-    }
-
-    .flowing-menu-marquee {
-      display: none;
-    }
-
-    .flowing-menu-label {
-      opacity: 1 !important;
-    }
-  }
-
   .flowing-menu-heading,
   .flowing-menu-list {
     width: calc(100% - 1.5rem);
@@ -423,6 +382,85 @@
 
   .flowing-menu-image {
     width: 6.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .handheld-shake,
+  .jolt-container,
+  .unsent-scrim,
+  .film-grain,
+  .blur-reveal-letter,
+  .scroll-explore-cue .animate-bounce {
+    animation: none !important;
+    will-change: auto;
+  }
+
+  .film-grain {
+    display: none;
+  }
+
+  .blur-reveal-letter {
+    filter: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .day-global-scrim {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .liquid-glass,
+  .day-glass,
+  .day-room-link,
+  .liquid-glass-circle {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .liquid-glass::before,
+  .day-glass::before,
+  .day-room-link::before,
+  .liquid-glass-circle::before {
+    display: none !important;
+  }
+
+  .liquid-glass {
+    background-color: rgba(20, 20, 20, 0.88);
+    background-blend-mode: normal;
+  }
+
+  .day-glass,
+  .day-room-link,
+  .day-auth .liquid-glass,
+  .day-feed .liquid-glass,
+  .day-profile .liquid-glass {
+    background-color: rgba(255, 255, 255, 0.94);
+  }
+
+  .text-aura {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  }
+
+  .text-aura-sm {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  }
+
+  .flowing-menu-marquee {
+    display: none;
+  }
+
+  .flowing-menu-label {
+    opacity: 1 !important;
+    transition: none;
+  }
+
+  .feed-post-card,
+  .day-room-post-card {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 22rem;
   }
 }
 

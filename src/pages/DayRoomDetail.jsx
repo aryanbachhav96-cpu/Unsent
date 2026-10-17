@@ -350,7 +350,7 @@ export default function DayRoomDetail() {
             const canDelete = post.isOwner || user?.role === 'admin';
 
             return (
-              <article key={post.id} className="day-glass rounded-3xl p-6 transition-all hover:shadow-md">
+              <article key={post.id} className="day-room-post-card day-glass rounded-3xl p-6 transition-all hover:shadow-md">
                 <div className="flex items-center justify-between gap-2 text-xs text-slate-500 mb-3">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="font-medium text-slate-800">{post.author_handle}</span>
